@@ -9,61 +9,67 @@ class QuizCardWidget extends StatelessWidget {
   final int completed;
   final String image;
   final int numAwnser;
+  final VoidCallback onTap;
   const QuizCardWidget(
       {Key? key,
       required this.title,
       required this.completed,
       required this.image,
-      required this.numAwnser})
+      required this.numAwnser,
+      required this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        padding: EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          border: Border.fromBorderSide(
-            BorderSide(color: AppColors.border),
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          padding: EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            border: Border.fromBorderSide(
+              BorderSide(color: AppColors.border),
+            ),
+            borderRadius: BorderRadius.circular(10),
           ),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 40,
-              width: 40,
-              child: Image.asset(image),
-            ),
-            SizedBox(
-              height: 24,
-            ),
-            Text(
-              title,
-              style: AppTextStyles.heading15,
-            ),
-            SizedBox(
-              height: 24,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    "${completed} de ${numAwnser} ",
-                    style: AppTextStyles.body11,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 40,
+                width: 40,
+                child: Image.asset(image),
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Text(
+                title,
+                style: AppTextStyles.heading15,
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      "${completed} de ${numAwnser} ",
+                      style: AppTextStyles.body11,
+                    ),
                   ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: ProgressIndicatorWidget(value: completed / numAwnser),
-                ),
-              ],
-            )
-          ],
+                  Expanded(
+                    flex: 2,
+                    child:
+                        ProgressIndicatorWidget(value: completed / numAwnser),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
