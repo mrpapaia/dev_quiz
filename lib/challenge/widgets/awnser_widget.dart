@@ -6,7 +6,7 @@ class AwnserWidget extends StatefulWidget {
   final String title;
   final bool isRigth;
   final bool isSelected;
-  final VoidCallback onTap;
+  final ValueChanged<bool> onTap;
   final bool disabled;
 
   const AwnserWidget({
@@ -42,12 +42,12 @@ class _AwnserWidgetState extends State<AwnserWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print("entou");
-    print(widget.isSelected);
     return IgnorePointer(
       ignoring: widget.disabled,
       child: GestureDetector(
-        onTap: widget.onTap,
+        onTap: () {
+          widget.onTap(widget.isRigth);
+        },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Container(

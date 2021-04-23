@@ -4,7 +4,7 @@ import 'package:DevQuiz/home/widgets/chart_widget.dart';
 import 'package:flutter/material.dart';
 
 class ScoreCardWidget extends StatelessWidget {
-  final value;
+  final double value;
 
   const ScoreCardWidget({Key? key, required this.value}) : super(key: key);
   @override

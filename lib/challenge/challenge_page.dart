@@ -1,4 +1,5 @@
 import 'package:DevQuiz/challenge/challenge_controller.dart';
+import 'package:DevQuiz/result/result_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:DevQuiz/challenge/widgets/next_button_widget.dart';
@@ -8,12 +9,11 @@ import 'package:DevQuiz/shared/model/question_model.dart';
 
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
-  final int qtdResp;
-
+  final String title;
   const ChallengePage({
     Key? key,
     required this.questions,
-    required this.qtdResp,
+    required this.title,
   }) : super(key: key);
   @override
   _ChallengePageState createState() => _ChallengePageState();
@@ -26,6 +26,13 @@ class _ChallengePageState extends State<ChallengePage> {
     if (controller.currentPage < widget.questions.length)
       pageController.nextPage(
           duration: Duration(milliseconds: 100), curve: Curves.linear);
+  }
+
+  onselected(bool value) {
+    if (value) {
+      controller.qtdRigth++;
+    }
+    nextPage();
   }
 
   @override
@@ -66,8 +73,8 @@ class _ChallengePageState extends State<ChallengePage> {
         children: widget.questions
             .map((e) => QuizWidget(
                   question: e,
-                  onChange: () {
-                    nextPage();
+                  onChange: (value) {
+                    onselected(value);
                   },
                 ))
             .toList(),
@@ -91,7 +98,16 @@ class _ChallengePageState extends State<ChallengePage> {
                   NextButtonWidget.green(
                       label: "Confirmar",
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ResultPage(
+                              title: widget.title,
+                              qtdRigth: controller.qtdRigth,
+                              length: widget.questions.length,
+                            ),
+                          ),
+                        );
                       })
               ],
             ),
