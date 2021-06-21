@@ -48,7 +48,7 @@
 
 ```
 git clone https://github.com/mrpapaia/dev_quiz.git
-cd devquiz
+cd dev_quiz
 flutter run
 ```
 
