@@ -7,9 +7,9 @@
 # Next Level Week - Dev Quiz (NLW)
 
 [![Author](https://img.shields.io/badge/author-mrpapaia-AD1256?style=flat-square)](https://github.com/souzavaltenis)
-[![Languages](https://img.shields.io/github/languages/count/mrpapaia/devquiz?color=%23AD1256&style=flat-square)](#)
-![GitHub stars](https://img.shields.io/github/stars/mrpapaia/devquiz?style=flat-square)
-![GitHub forks](https://img.shields.io/github/forks/mrpapaia/devquiz?style=flat-square)
+[![Languages](https://img.shields.io/github/languages/count/mrpapaia/dev_quiz?color=%23AD1256&style=flat-square)](#)
+![GitHub stars](https://img.shields.io/github/stars/mrpapaia/dev_quiz?style=flat-square)
+![GitHub forks](https://img.shields.io/github/forks/mrpapaia/dev_quiz?style=flat-square)
 
 > Dev Quiz é um aplicativo de questionário simples utilizando Flutter, realizado durante a semana Next Level Week #5 da Rocketseat.
 
